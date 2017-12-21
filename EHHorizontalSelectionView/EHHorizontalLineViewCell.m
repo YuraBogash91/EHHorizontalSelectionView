@@ -11,7 +11,7 @@
 
 @implementation EHHorizontalLineViewCell
 
-static float _EHHorizontalColorHeight = 4;
+static float _EHHorizontalColorHeight = 1;
 
 + (float)cellGap
 {
@@ -35,13 +35,13 @@ static float _EHHorizontalColorHeight = 4;
 - (UIView *)createSelectedView
 {
     self.clipsToBounds = NO;
-    self.coloredView.layer.shadowRadius = 7.5;
+    self.coloredView.layer.shadowRadius = 0;
     self.coloredView.layer.shadowOffset = CGSizeMake(0, 0);
     self.coloredView.layer.masksToBounds = NO;
     self.coloredView.layer.shadowColor = self.coloredView.backgroundColor.CGColor;
     self.coloredView.layer.shadowOpacity = 1;
     self.selectedView.clipsToBounds = NO;
-
+    
     [self updateSelectedFrames];
     return self.selectedView;
 }
@@ -61,13 +61,13 @@ static float _EHHorizontalColorHeight = 4;
 - (void)updateSelectedFrames
 {
     self.selectedView.frame = self.bounds;
-    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height - [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
+    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height + [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
 }
 
 - (void)updateFramesForMovingFromRect:(CGRect)rect
 {
     self.selectedView.frame = CGRectMake(CGRectGetMinX(rect) - CGRectGetMinX(self.frame), 0, rect.size.width, self.selectedView.bounds.size.height);
-    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height - [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
+    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height + [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
 }
 
 - (void)setSelectedCell:(BOOL)selected fromCellRect:(CGRect)rect
@@ -79,10 +79,10 @@ static float _EHHorizontalColorHeight = 4;
         if (!CGRectIsNull(rect))
         {
             [self updateFramesForMovingFromRect:rect];
-
+            
             [UIView animateWithDuration:0.4 animations:^{
                 [self updateSelectedFrames];
-            
+                
             }];
         }
     }
@@ -97,3 +97,4 @@ static float _EHHorizontalColorHeight = 4;
     [self setSelectedCell:selected fromCellRect:CGRectNull];
 }
 @end
+
