@@ -61,13 +61,13 @@ static float _EHHorizontalColorHeight = 1;
 - (void)updateSelectedFrames
 {
     self.selectedView.frame = self.bounds;
-    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height + [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
+    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height - [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
 }
 
 - (void)updateFramesForMovingFromRect:(CGRect)rect
 {
     self.selectedView.frame = CGRectMake(CGRectGetMinX(rect) - CGRectGetMinX(self.frame), 0, rect.size.width, self.selectedView.bounds.size.height);
-    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height + [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
+    self.coloredView.frame = CGRectMake(0, self.selectedView.bounds.size.height - [[self class] colorHeight], self.selectedView.bounds.size.width, [[self class] colorHeight]);
 }
 
 - (void)setSelectedCell:(BOOL)selected fromCellRect:(CGRect)rect

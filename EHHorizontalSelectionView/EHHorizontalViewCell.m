@@ -9,7 +9,7 @@
 #import "EHHorizontalViewCell.h"
 
 
-const CGFloat _EHDefaultGap = 10;
+const CGFloat _EHDefaultGap = 16;
 
 static NSMutableDictionary * _Nullable _EHHorisontalSelectionStyles = nil;
 
@@ -119,11 +119,11 @@ static NSMutableDictionary * _Nullable _EHHorisontalSelectionStyles = nil;
 {
     return [@{ @"tintColor" : [UIColor colorWithRed:0 green:122/255.0 blue:1 alpha:1],
                @"textColor" : [UIColor colorWithWhite:1 alpha:1],
-              @"font" : [UIFont fontWithName:@"HelveticaNeue" size:18.0],
-              @"fontMedium" : [UIFont fontWithName:@"HelveticaNeue-Medium" size:18.0],
-              @"cellGap" : @(_EHDefaultGap * 4),
-              @"needCentered" : @(YES)
-              } mutableCopy];
+               @"font" : [UIFont fontWithName:@"OpenSans-Regular" size:13.0],
+               @"fontMedium" : [UIFont fontWithName:@"OpenSans-Regular" size:13.0],
+               @"cellGap" : @(_EHDefaultGap ),
+               @"needCentered" : @(YES)
+               } mutableCopy];
 }
 
 + (void)checkStyles
@@ -282,7 +282,7 @@ static NSMutableDictionary * _Nullable _EHHorisontalSelectionStyles = nil;
             }
             else
                 self.titleLabel.textColor = [self.titleLabel.textColor colorWithAlphaComponent:0.5];
-                
+            
             
         }];
         
@@ -296,7 +296,7 @@ static NSMutableDictionary * _Nullable _EHHorisontalSelectionStyles = nil;
 
 - (void)highlight:(BOOL)highlighted
 {
-    self.titleLabel.alpha = highlighted ? 0.3 : 0.5;
+//    self.titleLabel.alpha = highlighted ? 0.3 : 0.5;
 }
 
 - (void)setTitleLabelText:(NSString *)text
@@ -310,3 +310,4 @@ static NSMutableDictionary * _Nullable _EHHorisontalSelectionStyles = nil;
 }
 
 @end
+
